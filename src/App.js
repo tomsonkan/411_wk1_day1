@@ -14,7 +14,7 @@ class App extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
-
+//state changes between true and false
 handleClick() {
   console.log("***This is state***", this.state.isClicked)  
   this.setState(state => ({
@@ -22,10 +22,12 @@ handleClick() {
     }));
   }
 
+//input value in form
 inputUpdate = event => {
     this.setState({text: event.target.value})
 }
 
+//form submit button
 formSubmit = event => {
   // built in method that does not wipe out state when browser refreshes
   event.preventDefault()
@@ -36,6 +38,7 @@ formSubmit = event => {
   })
 }
 
+//delete function 
 onDelete = (index) => {
   console.log("check " + index)
   this.state.todos.splice(index,1)
