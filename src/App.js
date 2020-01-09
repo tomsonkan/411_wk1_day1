@@ -41,9 +41,12 @@ formSubmit = event => {
 //delete function 
 onDelete = (index) => {
   console.log("check " + index)
-  this.state.todos.splice(index,1)
+  let stuffBefore = this.state.todos.slice(0,index);
+  let stuffAfter = this.state.todos.slice(index + 1, this.state.todos.length);
+
   this.setState({
-    todos: [...this.state.todos].splice(index, 1)
+    todos: [...stuffBefore, ...stuffAfter]
+    // todos: [...this.state.todos].splice(index, 1)
   })
 };
 
@@ -70,7 +73,7 @@ return (
           return (
           <li key={index}>
           {this.state.todos[index]}
-          <button value = {index}onClick = {() => this.onDelete(item.index)}>Delete</button>
+          <button value = {index}onClick = {() => this.onDelete(index)}>Delete</button>
           </li>
           )
         })}
